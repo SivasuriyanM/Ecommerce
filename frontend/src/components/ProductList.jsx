@@ -14,11 +14,14 @@ const ProductList = () => {
   }, []);
 
   return (
-    <div className="product-list">
-      {products.map((product) => (
-        <ProductCard key={product._id} product={product} />
-      ))}
-    </div>
+    <>
+      <h1>Electronics & accessories</h1>
+      <div className="product-list">
+        {products.map((product) => (
+          <ProductCard key={product._id} product={product} />
+        ))}
+      </div>
+    </>
   );
 };
 
