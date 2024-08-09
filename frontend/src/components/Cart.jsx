@@ -58,6 +58,30 @@ function Cart() {
                       ))}
                     </td>
                   </tr>
+                </tbody>
+              </table>
+            </td>
+            <td>
+              <table>
+                <tbody>
+                  <th>Order Summary</th>
+                  <tr>
+                    <td>Sub total:</td>
+                    <td>{cart.price}</td>
+                  </tr>
+                  <tr>
+                    <td>Tax</td>
+                    <td>{cart.price} + 5%</td>
+                  </tr>
+                  <tr>
+                    <td>Discount:</td>
+                    <td>{cart.price} - 5%</td>
+                  </tr>
+                  <hr />
+                  <tr>
+                    <td>Total:</td>
+                    <td>{cart.price}</td>
+                  </tr>
                   <tr>
                     <td>
                       <button
@@ -69,24 +93,24 @@ function Cart() {
                       </button>
                     </td>
                   </tr>
+                  <tr>
+                    {buy ? (
+                      <div>
+                        <h3>Available Payment Methods:</h3>
+                        <button>Gpay</button>
+                        <button>Credit Card</button>
+                        <button>UPI</button>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </tr>
                 </tbody>
               </table>
             </td>
           </tr>
         </tbody>
       </table>
-      <div>
-        {buy ? (
-          <div>
-            <h3>Available Payment Methods:</h3>
-            <button>Gpay</button>
-            <button>Credit Card</button>
-            <button>UPI</button>
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
     </div>
   );
 }
