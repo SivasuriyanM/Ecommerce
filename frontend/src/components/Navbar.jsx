@@ -1,13 +1,31 @@
 import React from "react";
 import "../App.css";
+import { UserChange } from "../Context/NavigationContext";
 function Navbar() {
+  const { setNav } = UserChange();
   return (
-    <div className="App-header">
-      <h1>CHUNKLEBYTES</h1>
-      <input></input>
-      <button>Search</button>
-      <button>Login</button>
-      <button>Sign Up</button>
+    <div className="nav-container">
+      <button
+        onClick={() => {
+          setNav("home");
+        }}
+      >
+        Home
+      </button>
+      <button
+        onClick={() => {
+          setNav("product");
+        }}
+      >
+        Product
+      </button>
+      <button
+        onClick={() => {
+          setNav("cart");
+        }}
+      >
+        Cart
+      </button>
     </div>
   );
 }

@@ -1,13 +1,17 @@
 import React from "react";
 import "../App.css";
+import { UserChange } from "../Context/NavigationContext";
 
 const ProductCard = ({ product }) => {
+  const { setNav, setSearch, setCart } = UserChange();
+
   const handleClick = () => {
-    alert(`Features
-    ${product.features.map((feature, index) => feature)}
-Testimonials:
-    ${product.testimonials.map((testimonial, index) => testimonial)}
-        `);
+    setSearch(product.name);
+    setNav("search");
+  };
+  const handleCart = () => {
+    setCart(product);
+    setNav("cart");
   };
   return (
     <div className="product-card">
@@ -17,7 +21,7 @@ Testimonials:
       <h3>Price: ${product.price}</h3>
       <div className="btn-wrapper">
         <button onClick={handleClick}>Details</button>
-        <button>Pre-order</button>
+        <button onClick={handleCart}>Cart</button>
       </div>
     </div>
   );

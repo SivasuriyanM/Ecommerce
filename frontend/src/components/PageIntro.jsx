@@ -1,7 +1,10 @@
 import React from "react";
 import "../App.css";
+import { UserChange } from "../Context/NavigationContext";
 
 function PageIntro() {
+  const { setNav } = UserChange();
+
   return (
     <div className="intro-container">
       <div className="intro-content">
@@ -10,7 +13,9 @@ function PageIntro() {
           Explore our handpicked selections and enjoy the best of fashion right
           at your fingertips.
         </p>
-        <button className="btn">GET STARTED NOW!</button>
+        <button className="btn" onClick={() => setNav("product")}>
+          GET STARTED NOW!
+        </button>
       </div>
       <div className="intro-img"></div>
     </div>

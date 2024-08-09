@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { getProducts } from "../services/productService";
+import React from "react";
+
+import { UserChange } from "../Context/NavigationContext";
+
 import ProductCard from "./ProductCard";
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const products = await getProducts();
-      setProducts(products);
-    };
-    fetchProducts();
-  }, []);
+  const { products } = UserChange();
 
   return (
     <>
