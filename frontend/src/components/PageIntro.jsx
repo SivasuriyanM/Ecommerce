@@ -8,7 +8,7 @@ function PageIntro() {
   return (
     <div className="intro-container">
       <div className="intro-content">
-        <h1>Welcome to Chunklebytes Fashion</h1>
+        <h1>Welcome to Chucklebytes Fashion</h1>
         <p>
           Explore our handpicked selections and enjoy the best of fashion right
           at your fingertips.
