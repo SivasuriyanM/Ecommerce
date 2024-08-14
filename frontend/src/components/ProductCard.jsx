@@ -1,16 +1,17 @@
 import React from "react";
 import "../App.css";
 import { UserChange } from "../Context/NavigationContext";
+import { addToCart } from "../services/UserService";
 
 const ProductCard = ({ product }) => {
-  const { setNav, setSearch, setCart } = UserChange();
+  const { currentUser, setNav, setSearch } = UserChange();
 
   const handleClick = () => {
     setSearch(product.name);
     setNav("search");
   };
   const handleCart = () => {
-    setCart(product);
+    addToCart(currentUser._id, "cart", product);
     setNav("cart");
   };
   return (

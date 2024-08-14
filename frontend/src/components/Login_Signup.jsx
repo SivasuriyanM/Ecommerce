@@ -6,7 +6,7 @@ import { UserChange } from "../Context/NavigationContext";
 import { createUser } from "../services/UserService";
 
 function Login_Signup() {
-  const { setNav, user } = UserChange();
+  const { setNav, user, setCurrentUser } = UserChange();
 
   console.log(user);
   const handleSubmit = (event) => {
@@ -28,13 +28,14 @@ function Login_Signup() {
   const handleClick = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const currentUser = user.find(({ name }) => name === formData.get("name"));
-    console.log(currentUser);
+    const loginUser = user.find(({ name }) => name === formData.get("name"));
+    console.log(loginUser);
     if (
-      currentUser.name === formData.get("name") &&
-      currentUser.password === formData.get("password")
+      loginUser.name === formData.get("name") &&
+      loginUser.password === formData.get("password")
     ) {
       setNav("home");
+      setCurrentUser(loginUser);
     } else {
       alert("Invalid Credentials");
     }

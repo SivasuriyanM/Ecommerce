@@ -7,8 +7,9 @@ export default function ContextProvider({ children }) {
   const [nav, setNav] = useState("home");
   const [search, setSearch] = useState();
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([""]);
   const [user, setUser] = useState();
+  const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -24,6 +25,7 @@ export default function ContextProvider({ children }) {
     };
     fetchUser();
   }, []);
+
   return (
     <NavContext.Provider
       value={{
@@ -34,6 +36,8 @@ export default function ContextProvider({ children }) {
         setCart,
         user,
         setUser,
+        currentUser,
+        setCurrentUser,
         search,
         setSearch,
       }}
