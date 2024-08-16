@@ -17,7 +17,7 @@ function Header() {
   return (
     <div className="navbar navbar-light bg-light">
       <div className="container-fluid">
-        <a href="# " className="navbar-brand">
+        <a href="#" className="navbar-brand">
           CHUCKLEBYTES
         </a>
         <div className="d-flex">
@@ -41,48 +41,49 @@ function Header() {
         </div>
         {nav === "auth" ? (
           ""
-        ) : currentUser === "" ? (
-          <button
-            className="btn btn-outline-success"
-            onClick={() => {
-              setNav("auth");
-            }}
-          >
-            Login
-          </button>
+        ) : typeof currentUser !== "undefined" ? (
+          <Dropdown>
+            <Dropdown.Toggle
+              style={{ all: "unset" }}
+              className="nav-link"
+              variant="success"
+              id="dropdown-basic"
+            >
+              {currentUser.name}
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#">Profile</Dropdown.Item>
+              <Dropdown.Item
+                href="#"
+                onClick={() => {
+                  setNav("cart");
+                }}
+              >
+                Cart
+              </Dropdown.Item>
+              <Dropdown.Item
+                href="#"
+                onClick={() => {
+                  setNav("auth");
+                  setCurrentUser(undefined);
+                  localStorage.setItem("currentUser", undefined);
+                }}
+              >
+                Logout
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         ) : (
           <>
-            <Dropdown>
-              <Dropdown.Toggle
-                style={{ all: "unset" }}
-                className="nav-link"
-                variant="success"
-                id="dropdown-basic"
-              >
-                {currentUser.name}
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-                <Dropdown.Item
-                  href="#/action-2"
-                  onClick={() => {
-                    setNav("cart");
-                  }}
-                >
-                  Cart
-                </Dropdown.Item>
-                <Dropdown.Item
-                  href="#/action-3"
-                  onClick={() => {
-                    setNav("auth");
-                    setCurrentUser("");
-                  }}
-                >
-                  Logout
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <button
+              className="btn btn-outline-success"
+              onClick={() => {
+                setNav("auth");
+              }}
+            >
+              Login
+            </button>
           </>
         )}
       </div>

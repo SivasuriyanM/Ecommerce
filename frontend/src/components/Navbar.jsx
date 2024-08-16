@@ -5,7 +5,7 @@ import { UserChange } from "../Context/NavigationContext";
 import Dropdown from "react-bootstrap/Dropdown";
 
 function Navbar() {
-  const { setNav } = UserChange();
+  const { setNav, currentUser } = UserChange();
   return (
     <ul className="nav nav-tabs">
       <li className="nav-item">
@@ -24,8 +24,7 @@ function Navbar() {
       <li className="nav-item dropdown">
         <Dropdown>
           <Dropdown.Toggle
-            style={{ all: "unset" }}
-            className="nav-link"
+            className="nav-link active"
             variant="success"
             id="dropdown-basic"
           >
@@ -33,10 +32,10 @@ function Navbar() {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Clothes</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Grocery </Dropdown.Item>
+            <Dropdown.Item href="#">Clothes</Dropdown.Item>
+            <Dropdown.Item href="#">Grocery </Dropdown.Item>
             <Dropdown.Item
-              href="#/action-3"
+              href="#"
               onClick={() => {
                 setNav("product");
               }}
@@ -46,20 +45,21 @@ function Navbar() {
           </Dropdown.Menu>
         </Dropdown>
       </li>
-      <li className="nav-item">
-        <a
-          className="nav-link"
-          href="#"
-          onClick={() => {
-            setNav("cart");
-          }}
-        >
-          Cart
-        </a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link disabled">Disabled</a>
-      </li>
+      {typeof currentUser !== "undefined" ? (
+        <li className="nav-item">
+          <a
+            className="nav-link "
+            href="#"
+            onClick={() => {
+              setNav("cart");
+            }}
+          >
+            Cart
+          </a>
+        </li>
+      ) : (
+        ""
+      )}
     </ul>
   );
 }

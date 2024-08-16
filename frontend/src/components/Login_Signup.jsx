@@ -36,6 +36,7 @@ function Login_Signup() {
     ) {
       setNav("home");
       setCurrentUser(loginUser);
+      localStorage.setItem("currentUser", loginUser.name);
     } else {
       alert("Invalid Credentials");
     }

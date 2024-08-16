@@ -110,7 +110,10 @@ function CartProduct({ item }) {
           <td>
             <td>
               <button
-                onClick={() => delToCart(currentUser._id, "cart", item._id)}
+                onClick={() => {
+                  delToCart(currentUser._id, "cart", item._id);
+                  window.location.reload();
+                }}
               >
                 Remove
               </button>

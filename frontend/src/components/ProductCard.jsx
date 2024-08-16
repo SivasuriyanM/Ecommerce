@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
   };
   const handleCart = () => {
     addToCart(currentUser._id, "cart", product);
-    setNav("cart");
+    alert("Added to Cart", currentUser.name);
   };
   return (
     <div className="product-card">

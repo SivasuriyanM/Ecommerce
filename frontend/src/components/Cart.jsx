@@ -5,11 +5,11 @@ import CartProduct from "./CartProduct";
 function Cart() {
   const { currentUser } = UserChange();
 
-  console.log(currentUser.cart);
+  console.log(currentUser.cart[0]);
 
   return (
     <div>
-      {currentUser.cart[0] === "" ? (
+      {typeof currentUser.cart[0] === "undefined" ? (
         <div
           style={{ margin: "250px", alignItems: "center", textAlign: "center" }}
         >
